@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Pengulangan Angka</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            max-width: 500px;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .hasil {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+        }
+
+        .output {
+            margin-top: 10px;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Form Pengulangan Angka</h2>
+        
+        <label>Masukkan Nilai Angka:</label>
+        <input type="text" id="nilai" placeholder="Contoh: 20">
+        
+        <button onclick="proses()">Proses</button>
+
+        <div class="hasil" id="hasil" style="display: none;">
+            <h3>Hasil:</h3>
+            <div class="output" id="output"></div>
+        </div>
+    </div>
+
+    <script>
+        function proses() {
+            var nilai = document.getElementById('nilai').value;
+            nilai = parseInt(nilai);
+            
+            if (!nilai || nilai < 1) {
+                alert('Masukkan angka yang valid!');
+                return;
+            }
+
+            var output = document.getElementById('output');
+            var hasil = document.getElementById('hasil');
+            var hasilArray = [];
+            
+            var habisDibagi3 = false;
+            var habisDibagi5 = false;
+            var habisDibagi15 = false;
+            
+            if (nilai % 3 === 0) {
+                habisDibagi3 = true;
+            }
+            
+            if (nilai % 5 === 0) {
+                habisDibagi5 = true;
+            }
+            
+            if (nilai % 15 === 0) {
+                habisDibagi15 = true;
+            }
+            
+            if (habisDibagi3) {
+                hasilArray.push('TI');
+            }
+            
+            if (habisDibagi5) {
+                hasilArray.push('Unindra');
+            }
+            
+            if (habisDibagi15) {
+                hasilArray.push('WEB');
+            }
+            
+            if (hasilArray.length > 0) {
+                output.innerHTML = hasilArray.join(', ');
+            } else {
+                output.innerHTML = 'Angka ' + nilai + ' tidak habis dibagi 3, 5, atau 15';
+            }
+            
+            hasil.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
